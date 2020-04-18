@@ -354,16 +354,7 @@ soap.createClient(url, function(err, client) {
 
 Este metodo se encarga de timbrar un CFDI, por tanto es el metodo mas importante.
 
-
-
-
-### URL de timbrado
-La siguiente es la URL de pruebas, con ella podras consumir y acceder a todos los metodos disponibles
-
-
-`http://devcfdi.sifei.com.mx:8080/SIFEI33/SIFEI`
-
-<div class="center-column light"></div>
+<p class="light"></p>
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
 <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body>
@@ -372,6 +363,15 @@ La siguiente es la URL de pruebas, con ella podras consumir y acceder a todos lo
 </ns2:getCFDIResponse></S:Body>
 </S:Envelope>
 ```
+
+
+### URL de timbrado
+La siguiente es la URL de pruebas, con ella podras consumir y acceder a todos los metodos disponibles
+
+
+`http://devcfdi.sifei.com.mx:8080/SIFEI33/SIFEI`
+
+
 ### Parametros de la solicitud
 
 A continuacion se muestran los parametros necesarios para consumir el ws
@@ -393,13 +393,19 @@ Recuerda solicitar tus accesos para poder realizar tus pruebas!
  Anteriormente el servicio requiería que el XML estuviera dentro de un archivo zip
 </aside>
 
->  Cuando se produce un error en el servicio la respuesta SOAP genera una excepcion llamada SifeiException:
+### Excepción
 
+ Cuando se produce un error en el servicio la respuesta SOAP genera una excepcion llamada SifeiException:
+
+
+<p class="light"></p>
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
 <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
 <S:Body>
-<S:Fault xmlns:ns4="http://www.w3.org/2003/05/soap-envelope"><faultcode>S:Server</faultcode><faultstring>Parámetros incompletos</faultstring>
+<S:Fault xmlns:ns4="http://www.w3.org/2003/05/soap-envelope">
+<faultcode>S:Server</faultcode>
+<faultstring>Parámetros incompletos</faultstring>
 <detail>
 <ns2:SifeiException xmlns:ns2="http://service.sifei.cancelacion/">
 <codigo>1003</codigo>
@@ -411,6 +417,7 @@ Recuerda solicitar tus accesos para poder realizar tus pruebas!
 </S:Body>
 </S:Envelope>
 ```
+
 ### Codigos de error
 
 Es importante mencionar ...
