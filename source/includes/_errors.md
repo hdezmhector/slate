@@ -7,7 +7,7 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 The Kittn API uses the following error codes:
 
 
-Error Code | Meaning
+Codigo de error| Meaning
 ---------- | -------
 400 | Bad Request -- Your request is invalid.
 401 | Unauthorized -- Your API key is wrong.
