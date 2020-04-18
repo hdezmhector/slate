@@ -3,6 +3,7 @@ Vagrant.configure(2) do |config|
   config.vm.network :forwarded_port, guest: 4567, host: 4567
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "2048"
+    #vb.gui = true
   end
 
   config.vm.provision "bootstrap",
@@ -11,6 +12,8 @@ Vagrant.configure(2) do |config|
       sudo apt-add-repository ppa:brightbox/ruby-ng
       sudo apt-get update
       sudo apt-get install -yq ruby2.4 ruby2.4-dev
+      curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+      sudo apt-get install -y nodejs
       sudo apt-get install -yq pkg-config build-essential nodejs git libxml2-dev libxslt-dev
       sudo apt-get autoremove -yq
       gem2.4 install --no-ri --no-rdoc bundler
