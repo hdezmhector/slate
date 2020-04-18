@@ -32,7 +32,8 @@ under the License.
     <title><%= current_page.data.title || "API Documentation" %></title>
 
     <style>
-      <%= Rouge::Themes::MonokaiSublime.render(:scope => '.highlight') %>
+      <%= Rouge::Themes::MonokaiSublime.render(:scope => '.highlight') %>      
+      <%= partial "includes/light.css" =%>
     </style>
     <%= stylesheet_link_tag :screen, media: :screen %>
     <%= stylesheet_link_tag :print, media: :print %>
@@ -65,7 +66,7 @@ under the License.
       <% end %>
       <% if current_page.data.search %>
         <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
+          <input type="text" class="search" id="input-search" placeholder="Buscar">
         </div>
         <ul class="search-results"></ul>
       <% end %>

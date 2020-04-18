@@ -193,7 +193,7 @@ html, body {
     padding-left: $nav-padding + $nav-padding + $nav-padding + $nav-indent;
     font-size: 12px;
   }
-  
+
   .toc-footer {
     padding: 1em 0;
     margin-top: 1em;
@@ -469,7 +469,7 @@ html, body {
   }
 
   code {
-    background-color: rgba(0,0,0,0.05);
+    background-color: rgba(197, 37, 37, 0.746);
     padding: 3px;
     border-radius: 3px;
     @extend %break-words;
@@ -632,4 +632,18 @@ html, body {
 
 .highlight, .highlight .w {
   background-color: $code-bg;
+}
+//with this I can style in the middle column 
+.content {
+  .light + pre {    
+    color: #545353; //because of the light bg, I set a dark color
+    position: static;
+    float: none;
+    clear: none;
+    margin: 0 28px;
+    left: 0;
+    margin-right: 50% !important;
+    width: 40% !important;
+    background-color: $light-bg;
+  }
 }
