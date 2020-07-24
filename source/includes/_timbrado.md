@@ -1,7 +1,7 @@
 
-# Timbrado
+# Timbrado 
 
-## Timbrado(getCFDI):
+## Timbrado(getCFDI):  (SOAP)
 
 ```ruby
 require 'json'
@@ -436,5 +436,94 @@ Codigo de error| Significado
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
 
+
+## Timbrado (getCFDIProcesa):  (SOAP)
+
+Recibir un cfdi para procesarlo posteriormente, respondiendo con un mensaje el cual indica que se recibió correctamente, así como el id de seguimiento, este CFDI será timbrado en el caso de haber sido correcto y para obtener el timbre se deberá consumir el método getXMLProceso.
+
+
+<p class="light"></p>
+```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+   <S:Body>
+      <ns2:getCFDIProcesaResponse xmlns:ns2="http://MApeados/">
+         <return>Cfdi en proceso de validacion, verificar mas tarde</return>
+         <return>62227649</return>
+      </ns2:getCFDIProcesaResponse>
+   </S:Body>
+</S:Envelope>
+```
+
+### URL de timbrado
+La siguiente es la URL de pruebas, con ella podras consumir y acceder a todos los metodos disponibles
+
+
+`http://devcfdi.sifei.com.mx:8080/SIFEI33/SIFEI`
+
+
+### Parametros de la solicitud
+
+A continuacion se muestran los parametros necesarios para consumir el ws
+
+Parametro | Tipo | Descripcion
+--------- | ------- | -----------
+Usuario | String | Usuario sifei
+Password | String | If setset to false, the result will include kittens that have already been adopted.
+IdEquipo | String | If setset to false, the result will include kittens that have already been adopted.
+archivoXMLZip | Binario(base64) | XML a timbrar
+Serie | Binario(base64) | XML a timbrar
+
+
+<aside class="success">
+Recuerda solicitar tus accesos para poder realizar tus pruebas!
+</aside>
+
+<aside class="notice">
+ Anteriormente el servicio requiería que el XML estuviera dentro de un archivo zip
+</aside>
+
+### Excepción
+
+ Cuando se produce un error en el servicio la respuesta SOAP genera una excepcion llamada SifeiException:
+
+
+<p class="light"></p>
+```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+<S:Body>
+<S:Fault xmlns:ns4="http://www.w3.org/2003/05/soap-envelope">
+<faultcode>S:Server</faultcode>
+<faultstring>Parámetros incompletos</faultstring>
+<detail>
+<ns2:SifeiException xmlns:ns2="http://service.sifei.cancelacion/">
+<codigo>1003</codigo>
+<detalle>Parámetros incompletos</detalle>
+<error>Parámetros incompletos</error>
+</ns2:SifeiException>
+</detail>
+</S:Fault>
+</S:Body>
+</S:Envelope>
+```
+
+### Codigos de error
+
+Es importante mencionar ...
+
+Codigo de error| Significado
+---------- | -------
+400 | Bad Request -- Your request is invalid.
+401 | Unauthorized -- Your API key is wrong.
+403 | Forbidden -- The kitten requested is hidden for administrators only.
+404 | Not Found -- The specified kitten could not be found.
+405 | Method Not Allowed -- You tried to access a kitten with an invalid method.
+406 | Not Acceptable -- You requested a format that isn't json.
+410 | Gone -- The kitten requested has been removed from our servers.
+418 | I'm a teapot.
+429 | Too Many Requests -- You're requesting too many kittens! Slow down!
+500 | Internal Server Error -- We had a problem with our server. Try again later.
+503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
 
  
